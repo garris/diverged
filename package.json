@@ -1,0 +1,17 @@
+{
+  "name": "different",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node ./node_modules/super-simple-web-server/ ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "diff": "^3.5.0",
+    "pixelmatch": "^4.0.2",
+    "super-simple-web-server": "^1.0.0"
+  }
+}

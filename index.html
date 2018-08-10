@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		#images {
+			display: flex;
+		    justify-content: space-evenly;
+		}
+		p {
+			background-color: #ddd;
+		}
+		img {
+			border: 4px solid #ddd;
+		}
+	</style>
+</head>
+
+<body>
+
+<div id="images">
+	<div>
+		<p>REF</p>
+		<img id="refImage" src=""/>
+	</div>
+	<div>
+		<p>TEST</p>
+		<img id="testImage" src=""/>
+	</div>
+	<div>
+		<p>pixelMatch</p>
+		<img id="pixelmatch" src=""/>
+	</div>
+	<div>
+		<p>meyersResult</p>
+		<img id="meyersResult" src=""/>
+	</div>
+</div>
+</body>
+<script type="text/javascript" src="./lib/pixelmatch.js"></script>
+<script type="text/javascript" src="./lib/diff.js"></script>
+<script type="text/javascript" src="./lib/chrome.js"></script>
+</html>
