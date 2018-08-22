@@ -3,12 +3,12 @@
 let MEYERS_DIFF_ARRAY_METHOD = undefined;
 // debugger
 if (typeof require !== 'undefined') {
-    MEYERS_DIFF_ARRAY_METHOD = require('./diff').diffArrays;
+    MEYERS_DIFF_ARRAY_METHOD = require('diff').diffArrays;
 } else {
     MEYERS_DIFF_ARRAY_METHOD = JsDiff.diffArrays;
 }
 
-const spread = 50;
+const spread = 50; // range of adjacent pixels to aggregate when calculating diff
 const IS_ADDED_WORD = '0_255_0_255';
 const IS_REMOVED_WORD = '255_0_0_255';
 const IS_ADDED_AND_REMOVED_WORD = '0_255_255_255';

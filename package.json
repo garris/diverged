@@ -1,11 +1,12 @@
 {
-  "name": "different",
+  "name": "differentjs",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "node ./node_modules/super-simple-web-server/ ./"
+    "serve": "node ./node_modules/super-simple-web-server/ ./",
+    "node_demo": "cd demo; node ./"
   },
   "author": "",
   "license": "ISC",

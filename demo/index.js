@@ -1,18 +1,18 @@
 'use strict';
 const ts = new Date().getTime();
-const OUTPUT_PATH = `./results/${ts}.png`
+const OUTPUT_PATH = `../results/${ts}.png`
 
 // const REF_PATH = './fixtures/pricing/1024_ref.png';
 // const TEST_PATH = './fixtures/pricing/1024_test.png';
-const REF_PATH = './fixtures/pricing/320_ref.png';
-const TEST_PATH = './fixtures/pricing/320_test.png';
+const REF_PATH = '../fixtures/pricing/320_ref.png';
+const TEST_PATH = '../fixtures/pricing/320_test.png';
 
 
 
 const PNG = require('pngjs').PNG;
 const fs = require('fs');
-const match = require('./node_modules/pixelmatch/');
-const different = require('./lib/different');
+const match = require('../node_modules/pixelmatch/');
+const different = require('../src/different');
 
 
 var threshold = undefined,
