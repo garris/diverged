@@ -11,7 +11,7 @@ const TEST_PATH = '../fixtures/pricing/320_test.png';
 
 const PNG = require('pngjs').PNG;
 const fs = require('fs');
-const match = require('../node_modules/pixelmatch/');
+const match = require('pixelmatch');
 const different = require('../src/different');
 
 
