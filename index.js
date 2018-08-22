@@ -1,46 +1,36 @@
 'use strict';
 const ts = new Date().getTime();
+const OUTPUT_PATH = `./results/${ts}.png`
 
-const REF_PATH = './fixtures/ref.png';
-const TEST_PATH = './fixtures/test.png';
-const OUTPUT_PATH = `./diff/${ts}.png`
+// const REF_PATH = './fixtures/pricing/1024_ref.png';
+// const TEST_PATH = './fixtures/pricing/1024_test.png';
+const REF_PATH = './fixtures/pricing/320_ref.png';
+const TEST_PATH = './fixtures/pricing/320_test.png';
 
 
-var PNG = require('pngjs').PNG,
-    fs = require('fs'),
-    match = require('./node_modules/pixelmatch/');
+
+const PNG = require('pngjs').PNG;
+const fs = require('fs');
+const match = require('./node_modules/pixelmatch/');
+const different = require('./lib/different');
 
 
 var threshold = undefined,
     includeAA = false;
 
-var ref_img = fs.createReadStream(REF_PATH).pipe(new PNG()).on('parsed', runDiff);
-var test_img = fs.createReadStream(TEST_PATH).pipe(new PNG()).on('parsed', runDiff);
+var ref_img = fs.createReadStream(REF_PATH).pipe(new PNG()).on('parsed', runDifferent);
+var test_img = fs.createReadStream(TEST_PATH).pipe(new PNG()).on('parsed', runDifferent);
 
-
-
-
-
-
-
-
-
-
-
-function logData() {
+function runDifferent() {
     if (!ref_img.data || !test_img.data) return;
-    console.log('ref_img>>',ref_img.data.toString('hex'));
-    // console.log('test_img>>',test_img.data.toString('hex'));
+
+    var diff = new PNG({width: ref_img.width, height: ref_img.height});
+    var differentDiff = different(ref_img.data, test_img.data, ref_img.height, ref_img.width);
+
+    diff.data = differentDiff;
+
+    diff.pack().pipe(fs.createWriteStream(OUTPUT_PATH));
 }
-
-
-
-
-
-
-
-
-
 
 
 function runDiff() {
