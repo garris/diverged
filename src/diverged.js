@@ -24,11 +24,11 @@ const IS_SAME_WORD = '255_255_255_255';
  * 
  */
 if (typeof module !== 'undefined') {
-    module.exports = different;
+    module.exports = diverged;
 }
 
-function different(reference, test, h, w) {
-    console.time("different_total_time");
+function diverged(reference, test, h, w) {
+    console.time("diverged_total_time");
 
     const spread = Math.floor(h / 80); //override
 
@@ -72,7 +72,7 @@ function different(reference, test, h, w) {
     console.timeEnd("imgDataWordsToClampedImgData");
     // console.log("imgDataArr>>>", imgDataArr);
 
-    console.timeEnd("different_total_time");
+    console.timeEnd("diverged_total_time");
     return imgDataArr;
 }
 

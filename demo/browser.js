@@ -2,20 +2,20 @@
 
 var img1 = new Image();
 img1.onload = isReady;
-// img1.src = "http://127.0.0.1:3000/fixtures/lpc/lpc_ref.png";
+img1.src = "http://127.0.0.1:3000/fixtures/lpc/margin_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/lpc/chwu_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/small/50_remove_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/pricing/600_2_test.png";
-img1.src = "http://127.0.0.1:3000/fixtures/pricing/320_ref.png";
+// img1.src = "http://127.0.0.1:3000/fixtures/pricing/320_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/pricing/1024_ref.png";
 
 var img2 = new Image();
 img2.onload = isReady;
-// img2.src = "http://127.0.0.1:3000/fixtures/lpc/lpc_test.png";
+img2.src = "http://127.0.0.1:3000/fixtures/lpc/margin_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/lpc/chwu_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/small/50_remove_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/pricing/600_2_ref.png";
-img2.src = "http://127.0.0.1:3000/fixtures/pricing/320_test.png";
+// img2.src = "http://127.0.0.1:3000/fixtures/pricing/320_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/pricing/1024_test.png";
 
 var hasRun = false;
@@ -55,15 +55,15 @@ function main() {
     pixelmatchResult.putImageData(pixelmatchResultImgData, 0, 0);
     console.timeEnd("pixelmatchResult");
 
-    console.time("different");
-    const differentImgData = different(getImgDataDataFromContext(img1Ctx), getImgDataDataFromContext(img2Ctx), h, w);
-    console.timeEnd("different");
+    console.time("diverged");
+    const divergedImgData = diverged(getImgDataDataFromContext(img1Ctx), getImgDataDataFromContext(img2Ctx), h, w);
+    console.timeEnd("diverged");
 
-    // meyersImgData.data = differentImgData;
+    // meyersImgData.data = divergedImgData;
     console.time("imgDataToMeyersImgData");
     let clampedImgData = getEmptyImgData(h, w)
-    for (var i = differentImgData.length - 1; i >= 0; i--) {
-        clampedImgData.data[i] = differentImgData[i];
+    for (var i = divergedImgData.length - 1; i >= 0; i--) {
+        clampedImgData.data[i] = divergedImgData[i];
     }
     var meyersDiffResult = imageToCanvasContext(null, w, h);
     meyersDiffResult.putImageData(clampedImgData, 0, 0);

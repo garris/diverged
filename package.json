@@ -1,8 +1,8 @@
 {
-  "name": "different",
+  "name": "diverged",
   "version": "1.0.0",
-  "description": "Image diffs diffed differently",
-  "main": "src/different.js",
+  "description": "Compare UI screenshots with document flow detection.",
+  "main": "src/diverged.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "node ./node_modules/super-simple-web-server/ ./",

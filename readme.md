@@ -1,11 +1,11 @@
-#DifferentJS
-_image diffs diffed differently_
+#Diverged
+_Compare UI screenshots with document flow detection._
 
 ##Install the demo
 **Option 1**
 
 ```
-npm install different
+npm install diverged
 ```
 
 **Option 2**
@@ -17,7 +17,7 @@ npm install
 ```
 
 ##Run the jewels
-_from the `differentjs` root directory_
+_from the `diverged` root directory_
 
 ###Node demo
 

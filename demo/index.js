@@ -12,22 +12,22 @@ const TEST_PATH = '../fixtures/pricing/320_test.png';
 const PNG = require('pngjs').PNG;
 const fs = require('fs');
 const match = require('pixelmatch');
-const different = require('../src/different');
+const diverged = require('../src/diverged');
 
 
 var threshold = undefined,
     includeAA = false;
 
-var ref_img = fs.createReadStream(REF_PATH).pipe(new PNG()).on('parsed', runDifferent);
-var test_img = fs.createReadStream(TEST_PATH).pipe(new PNG()).on('parsed', runDifferent);
+var ref_img = fs.createReadStream(REF_PATH).pipe(new PNG()).on('parsed', runDiverged);
+var test_img = fs.createReadStream(TEST_PATH).pipe(new PNG()).on('parsed', runDiverged);
 
-function runDifferent() {
+function runDiverged() {
     if (!ref_img.data || !test_img.data) return;
 
     var diff = new PNG({width: ref_img.width, height: ref_img.height});
-    var differentDiff = different(ref_img.data, test_img.data, ref_img.height, ref_img.width);
+    var divergedDiff = diverged(ref_img.data, test_img.data, ref_img.height, ref_img.width);
 
-    diff.data = differentDiff;
+    diff.data = divergedDiff;
 
     diff.pack().pipe(fs.createWriteStream(OUTPUT_PATH));
 }
@@ -47,6 +47,6 @@ function runDiff() {
 
     diff.pack().pipe(fs.createWriteStream(OUTPUT_PATH));
 
-    console.log('different pixels: ' + diffs);
+    console.log('diverged pixels: ' + diffs);
     console.log('error: ' + (Math.round(100 * 100 * diffs / (diff.width * diff.height)) / 100) + '%');
 }
