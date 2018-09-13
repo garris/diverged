@@ -32,4 +32,4 @@ npm run node_demo
 ```
 npm run serve
 ```
-Then open [http://127.0.0.1:3000/demo/](http://127.0.0.1:3000/demo/)
+...then open [http://127.0.0.1:3000/demo/](http://127.0.0.1:3000/demo/)
