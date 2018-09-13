@@ -1,6 +1,6 @@
 {
   "name": "diverged",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compare UI screenshots with document flow detection.",
   "main": "src/diverged.js",
   "scripts": {
