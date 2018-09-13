@@ -1,7 +1,7 @@
-#Diverged
+# Diverged
 _Compare UI screenshots with document flow detection._
 
-##Install the demo
+## Install the demo
 **Option 1**
 
 ```
@@ -16,10 +16,10 @@ Clone the root and `cd` in there and...
 npm install
 ```
 
-##Run the jewels
+## Run the jewels
 _from the `diverged` root directory_
 
-###Node demo
+### Node demo
 
 ```
 npm run node_demo
@@ -27,7 +27,7 @@ npm run node_demo
 ...then check the `./results` directory.
 
 
-###Browser demo
+### Browser demo
 
 ```
 npm run serve
