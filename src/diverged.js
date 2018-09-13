@@ -18,7 +18,7 @@ const IS_SAME_WORD = '255_255_255_255';
  * Applies meyers-diff algorithm to imageData formatted arrays
  * 
  * @param {Uint8ClampedArray} [reference] baseline image
- * @param {Uint8ClampedArray} [test] baseline image
+ * @param {Uint8ClampedArray} [test] test image
  * 
  * @returns {Uint8ClampedArray} diff image
  * 

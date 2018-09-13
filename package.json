@@ -13,6 +13,7 @@
   "dependencies": {
     "diff": "^3.5.0",
     "pixelmatch": "^4.0.2",
+    "pngjs": "^3.3.3",
     "super-simple-web-server": "^1.0.0"
   }
 }

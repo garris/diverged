@@ -2,6 +2,7 @@
 
 var img1 = new Image();
 img1.onload = isReady;
+// img1.src = "http://127.0.0.1:3000/fixtures/lhw/settings_ref.png";
 img1.src = "http://127.0.0.1:3000/fixtures/lpc/margin_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/lpc/chwu_ref.png";
 // img1.src = "http://127.0.0.1:3000/fixtures/small/50_remove_ref.png";
@@ -11,6 +12,7 @@ img1.src = "http://127.0.0.1:3000/fixtures/lpc/margin_ref.png";
 
 var img2 = new Image();
 img2.onload = isReady;
+// img2.src = "http://127.0.0.1:3000/fixtures/lhw/settings_test.png";
 img2.src = "http://127.0.0.1:3000/fixtures/lpc/margin_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/lpc/chwu_test.png";
 // img2.src = "http://127.0.0.1:3000/fixtures/small/50_remove_test.png";
