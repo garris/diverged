@@ -1,6 +1,9 @@
 # Diverged
 _Compare UI screenshots with document flow detection._
 
+![](./demo/example_result.png)
+
+
 ## Install the demo
 **Option 1**
 
