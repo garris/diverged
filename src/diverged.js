@@ -12,7 +12,8 @@ const spread = 50; // range of adjacent pixels to aggregate when calculating dif
 const IS_ADDED_WORD = '0_255_0_255';
 const IS_REMOVED_WORD = '255_0_0_255';
 const IS_ADDED_AND_REMOVED_WORD = '0_255_255_255';
-const IS_SAME_WORD = '255_255_255_255';
+const IS_SAME_WORD = '';
+const OPACITY = '30'; // 0-255 range
 
 /**
  * Applies meyers-diff algorithm to imageData formatted arrays
@@ -59,7 +60,7 @@ function diverged(reference, test, h, w) {
     // console.log("reducedColumnDiff>>>", reducedColumnDiff);
     
     console.time("unGroupAdjacent");
-    const expandedColumns = ungroupAdjacent(reducedColumnDiff, spread, h, w);
+    const expandedColumns = ungroupAdjacent(reducedColumnDiff, spread, cols_rows_ref.columns, h, w);
     console.timeEnd("unGroupAdjacent");
 
     console.time("columnWordDataToImgDataFormatAsWords");
@@ -111,8 +112,10 @@ function reduceColumnDiffRaw(columnDiffs, h, w) {
         let resultColumn = new Array();
         let removedCounter = 0;
         let resultClass = '';
+        let segment = [];
+        let debug = false;
 
-        for (let depthIndex = 0; depthIndex < h; depthIndex++) {
+        for (let depthIndex = 0; depthIndex < columnDiff.length; depthIndex++) {
             let segmentLength = 0;
 
             if (columnDiff[depthIndex].removed) {
@@ -150,23 +153,24 @@ function reduceColumnDiffRaw(columnDiffs, h, w) {
                 segmentLength = Math.min(segmentLength, h - resultColumn.length);
             }
 
-            let segment = new Array(segmentLength).fill(resultClass);
 
-            // // Uncomment this to see a rough image representation
-            // let segment = columnDiff[depthIndex].value.slice(0,segmentLength).map((value) => {
-            //     if (/|/.test(value))
-            //         return value.split('|')[0];
-            //     return value;
-            // });
+            if (debug || resultClass !== IS_SAME_WORD){
+                segment = new Array(segmentLength).fill(resultClass);
+            } else {
+                // reduced resolution image
+                segment = columnDiff[depthIndex].value.slice(0,segmentLength).map((value, i) => {
+                    if (/|/.test(value)) {
+                        return value.split('|')[0];
+                    }
+                    return value;
+                });
+            }
+
 
             resultColumn = resultColumn.concat(segment);
             
             if (resultColumn.length > h) {
                 console.log('WARNING -- this value is out of bounds!')
-            }
-
-            if (resultColumn.length === h) {
-                break;
             }
         }
         
@@ -188,6 +192,7 @@ function groupAdjacent(columns, spread, h, w) {
     if (!spread) {
         return columns;
     }
+    
     /**
      * [getAdjacentArrayBounds retuns existing adjacent lower and upper column bounds]
      * @param  {[int]} pointer [current index]
@@ -233,7 +238,7 @@ function groupAdjacent(columns, spread, h, w) {
     return interpolatedColumnsValues;
 }
 
-function ungroupAdjacent(grouped, spread, h, w) {
+function ungroupAdjacent(grouped, spread, columnUnderlay, h, w) {
     if (!spread) {
         return grouped;
     }
@@ -250,7 +255,8 @@ function ungroupAdjacent(grouped, spread, h, w) {
 
          const groupedIndex = mapUngroupedColumnIndexToGroupedIndex(i, spread);
          for (let j = 0; j < h; j++) {
-            ungrouped[i][j] = grouped[groupedIndex][j].split('|')[0];
+            const value = grouped[groupedIndex][j].split('|')[0];
+            ungrouped[i][j] = value ? value : columnUnderlay[i][j].replace(/\d+$/, OPACITY);
          }
     }
 
