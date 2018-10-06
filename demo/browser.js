@@ -77,7 +77,7 @@ function main() {
     document.getElementById('refImage').src = img1Ctx.canvas.toDataURL("image/png");
     document.getElementById('testImage').src = img2Ctx.canvas.toDataURL("image/png");
     document.getElementById('pixelmatch1').src = pixelmatchResult.canvas.toDataURL("image/png");
-    document.getElementById('pixelmatch2').src = pixelmatchResult.canvas.toDataURL("image/png");
+    // document.getElementById('pixelmatch2').src = pixelmatchResult.canvas.toDataURL("image/png");
     document.getElementById('lcsResult').src = lcsDiffResult.canvas.toDataURL("image/png");
 
 }
@@ -98,12 +98,6 @@ function getEmptyImgData(h, w) {
     return o.createImageData(w, h);
 }
 
-// function getEmptyImgContext(h, w) {
-//     var o = imageToCanvasContext(null, h, w);
-//     o.createImageData(w, h);
-//     return o;
-// }
-
 function imageToCanvasContext(_img, w, h) {
     let img = _img;
     if (!_img) {
@@ -118,3 +112,9 @@ function imageToCanvasContext(_img, w, h) {
     }
     return context;
 }
+
+// function getEmptyImgContext(h, w) {
+//     var o = imageToCanvasContext(null, h, w);
+//     o.createImageData(w, h);
+//     return o;
+// }
