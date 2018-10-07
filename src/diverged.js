@@ -153,8 +153,8 @@ function reduceColumnDiffRaw(columnDiffs, h, w) {
                 segmentLength = Math.min(segmentLength, h - resultColumn.length);
             }
 
-
-            if (debug || resultClass !== IS_SAME_WORD){
+            const printSampleMap = false;
+            if (!printSampleMap || resultClass !== IS_SAME_WORD){
                 segment = new Array(segmentLength).fill(resultClass);
             } else {
                 // reduced resolution image
