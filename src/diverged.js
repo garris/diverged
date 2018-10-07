@@ -60,7 +60,7 @@ function diverged(reference, test, h, w) {
     // console.log("reducedColumnDiff>>>", reducedColumnDiff);
     
     console.time("unGroupAdjacent");
-    const expandedColumns = ungroupAdjacent(reducedColumnDiff, spread, cols_rows_ref.columns, h, w);
+    const expandedColumns = ungroupAdjacent(reducedColumnDiff, spread, cols_rows_test.columns, h, w);
     console.timeEnd("unGroupAdjacent");
 
     console.time("columnWordDataToImgDataFormatAsWords");
