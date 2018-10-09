@@ -1,11 +1,15 @@
 'use strict';
-
-let MEYERS_DIFF_ARRAY_METHOD = undefined;
+const noop = function (){};
+let LCS_DIFF_ARRAY_METHOD = undefined;
 // debugger
 if (typeof require !== 'undefined') {
-    MEYERS_DIFF_ARRAY_METHOD = require('diff').diffArrays;
+    LCS_DIFF_ARRAY_METHOD = require('diff').diffArrays;
 } else {
-    MEYERS_DIFF_ARRAY_METHOD = JsDiff.diffArrays;
+    try {
+        LCS_DIFF_ARRAY_METHOD = JsDiff.diffArrays;
+    } catch(err) {
+        console.error(err);
+    }
 }
 
 const spread = 50; // range of adjacent pixels to aggregate when calculating diff
@@ -183,7 +187,7 @@ function reduceColumnDiffRaw(columnDiffs, h, w) {
 function diffArr(refArr, testArr, h, w) {
     let rawResultArr = [];
     for (let i = 0; i < refArr.length; i++) {
-        rawResultArr.push(MEYERS_DIFF_ARRAY_METHOD(refArr[i], testArr[i]));
+        rawResultArr.push(LCS_DIFF_ARRAY_METHOD(refArr[i], testArr[i]));
     }
     return rawResultArr;
 }
