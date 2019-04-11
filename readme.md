@@ -3,6 +3,8 @@ _Compare UI screenshots with document flow detection._
 
 ![](./demo/example_result.png)
 
+![](https://github.com/garris/diverged/blob/master/docs/diverged%20images/changeGraphDiff.png)
+
 
 ## Install the demo
 **Option 1**
