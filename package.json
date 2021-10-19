@@ -8,6 +8,10 @@
     "serve": "node ./node_modules/super-simple-web-server/ ./",
     "node_demo": "cd demo; node ./"
   },
+  "repository": {	
+    "type": "git",
+    "url": "https://github.com/garris/diverged.git"
+  },
   "author": "Garris Shipon",
   "license": "ISC",
   "dependencies": {
